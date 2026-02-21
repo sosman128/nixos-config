@@ -7,7 +7,7 @@
 }:
 
 {
-  home-manager.users.sosman6 =
+  home-manager.users.sosman64 =
     {
       pkgs,
       lib,
