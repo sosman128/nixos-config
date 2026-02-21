@@ -16,7 +16,6 @@
   # --- USER PACKAGES
   users.users.sosman64.packages = with pkgs; [
     kdePackages.kate
-    gh
     chromium
     vesktop
     krita
