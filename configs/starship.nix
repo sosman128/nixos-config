@@ -7,7 +7,6 @@
 }:
 
 {
-
   home-manager.users.sosman64 =
     {
       pkgs,
@@ -17,14 +16,18 @@
     }:
 
     {
-      # --- OPTIONS
+      # --- GENERAL
       programs.starship.enable = true;
 
-      # --- CONFIGURATION
-      home.file.".config/starship.toml".text = ''
+      # --- FILE
+      home.file.".config/starship.toml".text =
+        let
+          battery-disabled = true;
+        in ''
         "$schema" = 'https://starship.rs/config-schema.json'
         [battery]
-        disabled = true
+        disabled = ${if battery then "true" else "false"}
+
         [aws]
         symbol = " "
 
