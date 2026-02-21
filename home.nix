@@ -12,6 +12,7 @@
     ./configs/fastfetch.nix
     ./configs/btop.nix
     ./configs/eza.nix
+    ./configs/srb2.nix
   ];
 
   # --- USER SETTINGS
@@ -40,11 +41,6 @@
       # --- BASH
       programs.bash.enable = true;
       home.shellAliases.nrb = "sudo nixos-rebuild switch --no-reexec";
-
-      # --- SRB2
-      home.file.".srb2/addons" = {
-        source = config.lib.file.mkOutOfStoreSymlink "../../etc/nixos/resources/srb2/addons";
-      };
 
       home.stateVersion = "25.11";
     };
