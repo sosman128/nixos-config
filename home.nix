@@ -9,6 +9,7 @@
 {
   imports = [
     ./configs/starship.nix
+    ./configs/fastfetch.nix
   ];
 
   # --- USER SETTINGS
@@ -37,11 +38,6 @@
       # --- BASH
       programs.bash.enable = true;
       home.shellAliases.nrb = "sudo nixos-rebuild switch --no-reexec";
-
-      # --- FASTFETCH
-      programs.fastfetch.enable = true;
-      home.shellAliases.fastfetch = "clear && fastfetch --color magenta --logo-color-1 magenta --logo-color-2 black --color-output white";
-      home.shellAliases.ff = "fastfetch";
 
       # --- EZA
       programs.eza = {
