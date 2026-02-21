@@ -10,6 +10,7 @@
   imports = [
     ./configs/starship.nix
     ./configs/fastfetch.nix
+    ./configs/btop.nix
   ];
 
   # --- USER SETTINGS
@@ -50,10 +51,6 @@
       home.shellAliases.tree = "eza --tree";
 
       # --- BTOP
-      programs.btop = {
-        enable = true;
-        settings.color_theme = "horizon";
-      };
 
       # --- SRB2
       home.file.".srb2/addons" = {

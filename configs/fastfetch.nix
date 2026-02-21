@@ -16,7 +16,7 @@
     }:
 
     {
-      # --- OPTIONS
+      # --- GENERAL
       programs.fastfetch.enable = true;
 
       # --- HOME
