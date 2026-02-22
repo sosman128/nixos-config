@@ -7,10 +7,18 @@
 }:
 
 {
-  home-manager.users.sosman64 = {
-    # --- GENERAL
-    home.file.".srb2/addons" = {
-      source = config.lib.file.mkOutOfStoreSymlink "../../etc/nixos/resources/srb2/addons";
+  home-manager.users.sosman64 =
+    {
+      pkgs,
+      lib,
+      config,
+      ...
+    }:
+
+    {
+      # --- HOME
+      home.file.".srb2/addons" = {
+        source = config.lib.file.mkOutOfStoreSymlink "../../etc/nixos/resources/srb2/addons";
+      };
     };
-  };
 }

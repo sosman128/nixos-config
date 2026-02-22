@@ -19,7 +19,7 @@
       # --- GENERAL
       programs.starship.enable = true;
 
-      # --- HOME
+      # --- FILE
       home.file.".config/starship.toml".text =
         let
           battery-disabled = true;
@@ -140,7 +140,55 @@
         symbol = " "
 
         [os.symbols]
+        Alpaquita = " "
+        Alpine = " "
+        AlmaLinux = " "
+        Amazon = " "
+        Android = " "
+        AOSC = " "
+        Arch = " "
+        Artix = " "
+        CachyOS = " "
+        CentOS = " "
+        Debian = " "
+        DragonFly = " "
+        Elementary = " "
+        Emscripten = " "
+        EndeavourOS = " "
+        Fedora = " "
+        FreeBSD = " "
+        Garuda = "󰛓 "
+        Gentoo = " "
+        HardenedBSD = "󰞌 "
+        Illumos = "󰈸 "
+        Ios = "󰀷 "
+        Kali = " "
+        Linux = " "
+        Mabox = " "
+        Macos = " "
+        Manjaro = " "
+        Mariner = " "
+        MidnightBSD = " "
+        Mint = " "
+        NetBSD = " "
         NixOS = " "
+        Nobara = " "
+        OpenBSD = "󰈺 "
+        openSUSE = " "
+        OracleLinux = "󰌷 "
+        Pop = " "
+        Raspbian = " "
+        Redhat = " "
+        RedHatEnterprise = " "
+        RockyLinux = " "
+        Redox = "󰀘 "
+        Solus = "󰠳 "
+        SUSE = " "
+        Ubuntu = " "
+        Unknown = " "
+        Void = " "
+        Windows = "󰍲 "
+        Zorin = " "
 
         [package]
         symbol = "󰏗 "

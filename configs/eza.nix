@@ -23,6 +23,8 @@
         colors = "auto";
         icons = "auto";
       };
+
+      # --- HOME
       home.shellAliases.ls = "eza";
       home.shellAliases.tree = "eza --tree";
     };
