@@ -13,6 +13,7 @@
     ./configs/btop.nix
     ./configs/eza.nix
     ./configs/srb2.nix
+    ./configs/bash.nix
   ];
 
   # --- USER SETTINGS
@@ -35,13 +36,7 @@
     }:
 
     {
-      # --- HOME-MANAGER SETTINGS
       home.enableNixpkgsReleaseCheck = false;
-
-      # --- BASH
-      programs.bash.enable = true;
-      home.shellAliases.nrb = "sudo nixos-rebuild switch --no-reexec";
-
       home.stateVersion = "25.11";
     };
 }
