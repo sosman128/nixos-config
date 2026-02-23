@@ -23,6 +23,9 @@
       };
 
       # --- HOME
-      home.shellAliases.cd = "z";
+      home.shellAliases = {
+        cd = "z";
+        cdi = "zi";
+      };
     };
 }
