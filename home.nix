@@ -14,6 +14,7 @@
     ./configs/eza.nix
     ./configs/srb2.nix
     ./configs/bash.nix
+    ./configs/zoxide.nix
   ];
 
   # --- USER SETTINGS
