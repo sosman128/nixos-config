@@ -25,7 +25,9 @@
       };
 
       # --- HOME
-      home.shellAliases.ls = "eza";
-      home.shellAliases.tree = "eza --tree";
+      home.shellAliases = {
+        ls = "eza";
+        tree = "eza --tree";
+      };
     };
 }
