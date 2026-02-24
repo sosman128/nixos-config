@@ -11,6 +11,7 @@
     emacs
     python3
     wget
+    mangowc
   ];
 
   # --- USER PACKAGES
@@ -20,6 +21,13 @@
     vesktop
     krita
     nixfmt
+    nixd
+    bash
+    btop
+    eza
+    fastfetch
+    starship
+    zoxide
     srb2
   ];
 
