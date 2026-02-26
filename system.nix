@@ -46,7 +46,6 @@
   # --- KEYBOARD LAYOUT
   services.xserver.xkb = {
     layout = "us";
-    variant = "";
   };
 
   # --- PRINTER SUPPORT

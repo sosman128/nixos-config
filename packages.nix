@@ -29,6 +29,11 @@
     starship
     zoxide
     srb2
+    swaybg
+    grim
+    slurp
+    wl-clipboard
+    alacritty
   ];
 
   # --- FONT PACKAGES
