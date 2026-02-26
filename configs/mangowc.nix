@@ -35,8 +35,8 @@
             { mod = "SUPER"; key = "t"; command = "spawn,alacritty"; }
             { mod = "SUPER"; key = "s"; command = "spawn_shell,grim -g $(slurp)"; }
 
-            { mod = "SUPER"; key = "bracketleft"; command = "tagtoleft"; }
-            { mod = "SUPER"; key = "bracketright"; command = "tagtoright"; }
+            { mod = "SUPER"; key = "bracketleft"; command = "viewtoleft"; }
+            { mod = "SUPER"; key = "bracketright"; command = "viewtoright"; }
 
             { mod = "SUPER"; key = "h"; command = "focusdir,left"; }
             { mod = "SUPER"; key = "j"; command = "focusdir,down"; }
