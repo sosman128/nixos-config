@@ -17,6 +17,7 @@
   # --- USER PACKAGES
   users.users.sosman64.packages = with pkgs; [
     kdePackages.kate
+    kdePackages.qtstyleplugin-kvantum
     chromium
     vesktop
     krita
