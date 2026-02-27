@@ -7,12 +7,13 @@
 
 {
   imports = [ ./hardware-configuration.nix ];
-  # --- NIX
+  # --- NIX SETTINGS
   nix.settings.experimental-features = [
     "nix-command"
     "flakes"
   ];
   nixpkgs.config.allowUnfree = true;
+  nix.settings.auto-optimise-store = true;
 
   # --- BOOTLOADER
   boot.loader.systemd-boot.enable = true;

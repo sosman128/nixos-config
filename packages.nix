@@ -11,7 +11,6 @@
     emacs
     python3
     wget
-    mangowc
   ];
 
   # --- USER PACKAGES
@@ -30,7 +29,6 @@
     starship
     zoxide
     srb2
-    swaybg
     grim
     slurp
     wl-clipboard
