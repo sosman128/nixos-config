@@ -19,21 +19,11 @@
     {
       home.file.".config/niri/config.kdl".text =
         let
-          idk = "placeholder";
+          structureOuter = outerText: innerText: "${outerText} {\n\t${innerText}\n}";
+          structureInner = outerText: innerText: "${outerText} {\n\t${innerText}\n\t}";
         in
         ''
-          input {
-              keyboard {
-                  xkb {
-                      // options "grp:win_space_toggle,compose:ralt,ctrl:nocaps"
-                  }
-              }
-          }
-          /-output "eDP-1" {
-              scale 2
-              transform "normal"
-              position x=1280 y=0
-          }
+          ${structureInner "xkb" "options \" caps:super \"" |> structureInner "keyboard" |> structureOuter "input"}
           layout {
               gaps 16
               center-focused-column "never"
@@ -57,6 +47,7 @@
               shadow {
                   color "#0007"
               }
+          }
           spawn-at-startup "waybar"
           hotkey-overlay {
               skip-at-startup
