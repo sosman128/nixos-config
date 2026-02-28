@@ -11,6 +11,7 @@
     emacs
     python3
     wget
+    niri
   ];
 
   # --- USER PACKAGES

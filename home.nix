@@ -15,6 +15,7 @@
     ./configs/srb2.nix
     ./configs/bash.nix
     ./configs/zoxide.nix
+    ./configs/niri.nix
   ];
 
   # --- USER SETTINGS
