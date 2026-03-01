@@ -5,7 +5,7 @@
   inputs,
   ...
 }:
-
+# TODO convert layout to the structure system
 {
   home-manager.users.sosman64 =
     {
@@ -19,11 +19,10 @@
     {
       home.file.".config/niri/config.kdl".text =
         let
-          structureOuter = outerText: innerText: "${outerText} {\n\t${innerText}\n}";
-          structureInner = outerText: innerText: "${outerText} {\n\t${innerText}\n\t}";
+          structure = outerText: innerText: "${outerText} {\n${innerText}\n}";
         in
         ''
-          ${structureInner "xkb" "options \" caps:super \"" |> structureInner "keyboard" |> structureOuter "input"}
+          ${structure "xkb" "options \" caps:super \"" |> structure "keyboard" |> structure "input"}
           layout {
               gaps 16
               center-focused-column "never"

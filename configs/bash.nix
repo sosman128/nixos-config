@@ -21,7 +21,7 @@
 
       # --- HOME
       home.shellAliases = {
-        nrb = "sudo nixos-rebuild switch --no-reexec --extra-experimental-features pipe-operators";
+        nrb = "sudo nixos-rebuild switch --no-reexec";
         ngc = "sudo nix-collect-garbage --delete-older-than 1d && sudo /run/current-system/bin/switch-to-configuration boot";
       };
     };
