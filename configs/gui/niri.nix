@@ -19,6 +19,14 @@
     {
       home.file.".config/niri/config.kdl".text =
         let
+          preferNoCSD = true;
+
+          defaultColumnWidth = "0.5";
+
+          shadowColor = "#181926";
+
+          cornerRadius = "7";
+
           xkb = {
             options = "caps:super";
             layout = "us,eg";
@@ -27,6 +35,15 @@
           layout = {
             gaps = "8";
             centerFocusedColumn = "never";
+          };
+
+          border = {
+            width = "4";
+            colors = {
+              active = "#ee99a0";
+              inactive = "#939ab7";
+              urgent = "#ed8796";
+            };
           };
 
           proportions = [
@@ -40,7 +57,7 @@
             { key = "Mod+T"; command = "spawn \"alacritty\";"; }
             { key = "Mod+H"; command = "focus-column-left;"; }
             { key = "Mod+J"; command = "focus-window-down;"; }
-            { key = "Mod+K"; command = "focus-window-down;"; }
+            { key = "Mod+K"; command = "focus-window-up;"; }
             { key = "Mod+L"; command = "focus-column-right;"; }
             { key = "Mod+U"; command = "focus-workspace-down;"; }
             { key = "Mod+I"; command = "focus-workspace-up;"; }
@@ -50,16 +67,33 @@
             { key = "Mod+Alt+L"; command = "move-column-right;"; }
             { key = "Mod+Alt+U"; command = "move-column-to-workspace-down;"; }
             { key = "Mod+Alt+I"; command = "move-column-to-workspace-up;"; }
+            { key = "Mod+N"; command = "consume-or-expel-window-left;"; }
+            { key = "Mod+M"; command = "consume-or-expel-window-right;"; }
             { key = "Mod+D repeat=false"; command = "toggle-overview;"; }
             { key = "Mod+Q repeat=false"; command = "close-window;"; }
             { key = "Mod+Alt+Q"; command = "quit;"; }
-            { key = "Mod+W"; command = "maximize-column;"; }
+            { key = "Mod+W"; command = "switch-preset-column-width;"; }
             { key = "Mod+Alt+W"; command = "fullscreen-window;"; }
             { key = "Print"; command = "screenshot;";}
             { key = "Alt+Print"; command = "screenshot-window;";}
+            { key = "XF86AudioRaiseVolume allow-when-locked=true"; command = "spawn-sh \"wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ -l 1.0\";"; }
+            { key = "XF86AudioLowerVolume allow-when-locked=true"; command = "spawn-sh \"wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-\";"; }
+            { key = "XF86AudioMute allow-when-locked=true"; command = "spawn-sh \"wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle\";"; }
+            { key = "XF86AudioMicMute allow-when-locked=true"; command = "spawn-sh \"wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle\";"; }
+            { key = "XF86AudioPlay allow-when-locked=true"; command = "spawn-sh \"playerctl play-pause\";"; }
+            { key = "XF86AudioStop allow-when-locked=true"; command = "spawn-sh \"playerctl stop\";"; }
+            { key = "XF86AudioPrev allow-when-locked=true"; command = "spawn-sh \"playerctl previous\";"; }
+            { key = "XF86AudioNext allow-when-locked=true"; command = "spawn-sh \"playerctl next\";"; }
+            { key = "XF86MonBrightnessUp allow-when-locked=true"; command = "spawn \"brightnessctl\" \"--class=backlight\" \"set\" \"+10%\";"; }
+            { key = "XF86MonBrightnessDown allow-when-locked=true"; command = "spawn \"brightnessctl\" \"--class=backlight\" \"set\" \"10%-\";"; }
           ];
         in
         ''
+          window-rule {
+              geometry-corner-radius ${cornerRadius}
+              clip-to-geometry true
+          }
+          ${if preferNoCSD then "prefer-no-csd" else ""}
           input {
               keyboard {
                   xkb {
@@ -74,43 +108,26 @@
               preset-column-widths {
                   ${builtins.concatStringsSep "\n\t" (builtins.map (text: "proportion ${text}") proportions)}
               }
-              default-column-width { proportion 0.5; }
+              default-column-width { proportion ${defaultColumnWidth}; }
               focus-ring {
-                  width 4
-                  active-color "#7fc8ff"
-                  inactive-color "#505050"
+                  off
               }
               border {
-                  width 4
-                  active-color "#ffc87f"
-                  inactive-color "#505050"
-                  urgent-color "#9b0000"
+                  width ${border.width}
+                  active-color "${border.colors.active}"
+                  inactive-color "${border.colors.inactive}"
+                  urgent-color "${border.colors.urgent}"
               }
               shadow {
-                  color "#0007"
+                  color "${shadowColor}"
               }
           }
-
           spawn-at-startup "waybar"
           hotkey-overlay {
               skip-at-startup
           }
-
           screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
-          animations {
-          }
-
           binds {
-              XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ -l 1.0"; }
-              XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-"; }
-              XF86AudioMute        allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
-              XF86AudioMicMute     allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
-              XF86AudioPlay        allow-when-locked=true { spawn-sh "playerctl play-pause"; }
-              XF86AudioStop        allow-when-locked=true { spawn-sh "playerctl stop"; }
-              XF86AudioPrev        allow-when-locked=true { spawn-sh "playerctl previous"; }
-              XF86AudioNext        allow-when-locked=true { spawn-sh "playerctl next"; }
-              XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+10%"; }
-              XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "10%-"; }
               ${builtins.map ({key,command}: "\t${key} { ${command} }") keybinds |> builtins.concatStringsSep "\n"}
           }
         '';
