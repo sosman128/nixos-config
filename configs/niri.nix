@@ -5,7 +5,7 @@
   inputs,
   ...
 }:
-# TODO convert layout to the structure system
+
 {
   home-manager.users.sosman64 =
     {
@@ -19,17 +19,45 @@
     {
       home.file.".config/niri/config.kdl".text =
         let
-          structure = outerText: innerText: "${outerText} {\n${innerText}\n}";
+          xkb = {
+            options = "caps:super";
+            layout = "us,eg";
+          };
+
+          layout = {
+            gaps = "8";
+            centerFocusedColumn = "never";
+          };
+
+          proportions = [
+            "0.33333"
+            "0.5"
+            "0.66667"
+            "1.0"
+          ];
+
+          keybinds = [
+            { key = "Mod+T"; command = "spawn \"alacritty\";"; }
+            { key = "Mod+H"; command = "focus-column-left;"; }
+            { key = "Mod+J"; command = "focus-window-down;"; }
+            { key = "Mod+K"; command = "focus-window-down;"; }
+            { key = "Mod+L"; command = "focus-column-right;"; }
+          ];
         in
         ''
-          ${structure "xkb" "options \" caps:super \"" |> structure "keyboard" |> structure "input"}
+          input {
+              keyboard {
+                  xkb {
+                      options "${xkb.options}"
+                      layout "${xkb.layout}"
+                  }
+              }
+          }
           layout {
-              gaps 16
-              center-focused-column "never"
+              gaps ${layout.gaps}
+              center-focused-column "${layout.centerFocusedColumn}"
               preset-column-widths {
-                  proportion 0.33333
-                  proportion 0.5
-                  proportion 0.66667
+                  ${builtins.concatStringsSep "\n\t" (builtins.map (text: "proportion ${text}") proportions)}
               }
               default-column-width { proportion 0.5; }
               focus-ring {
@@ -89,18 +117,6 @@
               XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "10%-"; }
               Mod+O repeat=false { toggle-overview; }
               Mod+Q repeat=false { close-window; }
-              Mod+Left  { focus-column-left; }
-              Mod+Down  { focus-window-down; }
-              Mod+Up    { focus-window-up; }
-              Mod+Right { focus-column-right; }
-              Mod+H     { focus-column-left; }
-              Mod+J     { focus-window-down; }
-              Mod+K     { focus-window-up; }
-              Mod+L     { focus-column-right; }
-              Mod+Ctrl+Left  { move-column-left; }
-              Mod+Ctrl+Down  { move-window-down; }
-              Mod+Ctrl+Up    { move-window-up; }
-              Mod+Ctrl+Right { move-column-right; }
               Mod+Ctrl+H     { move-column-left; }
               Mod+Ctrl+J     { move-window-down; }
               Mod+Ctrl+K     { move-window-up; }
@@ -109,22 +125,6 @@
               Mod+End  { focus-column-last; }
               Mod+Ctrl+Home { move-column-to-first; }
               Mod+Ctrl+End  { move-column-to-last; }
-              Mod+Shift+Left  { focus-monitor-left; }
-              Mod+Shift+Down  { focus-monitor-down; }
-              Mod+Shift+Up    { focus-monitor-up; }
-              Mod+Shift+Right { focus-monitor-right; }
-              Mod+Shift+H     { focus-monitor-left; }
-              Mod+Shift+J     { focus-monitor-down; }
-              Mod+Shift+K     { focus-monitor-up; }
-              Mod+Shift+L     { focus-monitor-right; }
-              Mod+Shift+Ctrl+Left  { move-column-to-monitor-left; }
-              Mod+Shift+Ctrl+Down  { move-column-to-monitor-down; }
-              Mod+Shift+Ctrl+Up    { move-column-to-monitor-up; }
-              Mod+Shift+Ctrl+Right { move-column-to-monitor-right; }
-              Mod+Shift+Ctrl+H     { move-column-to-monitor-left; }
-              Mod+Shift+Ctrl+J     { move-column-to-monitor-down; }
-              Mod+Shift+Ctrl+K     { move-column-to-monitor-up; }
-              Mod+Shift+Ctrl+L     { move-column-to-monitor-right; }
               Mod+Page_Down      { focus-workspace-down; }
               Mod+Page_Up        { focus-workspace-up; }
               Mod+U              { focus-workspace-down; }
@@ -185,14 +185,11 @@
               Mod+Shift+Equal { set-window-height "+10%"; }
               Mod+V       { toggle-window-floating; }
               Mod+Shift+V { switch-focus-between-floating-and-tiling; }
-              Mod+W { toggle-column-tabbed-display; }
               Print { screenshot; }
               Ctrl+Print { screenshot-screen; }
               Alt+Print { screenshot-window; }
-              Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
               Mod+Shift+E { quit; }
-              Ctrl+Alt+Delete { quit; }
-              Mod+Shift+P { power-off-monitors; }
+              ${builtins.map ({key,command}: "${key} { ${command} }") keybinds |> builtins.concatStringsSep "\n"}
           }
         '';
     };
