@@ -43,6 +43,7 @@
     xwayland-satellite
     swaybg
     swww
+    quickshell
   ];
 
   # --- FONT PACKAGES
