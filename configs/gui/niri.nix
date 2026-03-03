@@ -54,7 +54,8 @@
           ];
 
           keybinds = [
-            { key = "Mod+T"; command = "spawn \"alacritty\";"; }
+            { key = "Mod+Alt+E"; command = "spawn \"alacritty\";"; }
+            { key = "Mod+E"; command = "spawn \"fuzzel\";"; }
             { key = "Mod+H"; command = "focus-column-left;"; }
             { key = "Mod+J"; command = "focus-window-down;"; }
             { key = "Mod+K"; command = "focus-window-up;"; }
@@ -69,7 +70,7 @@
             { key = "Mod+Alt+I"; command = "move-column-to-workspace-up;"; }
             { key = "Mod+N"; command = "consume-or-expel-window-left;"; }
             { key = "Mod+M"; command = "consume-or-expel-window-right;"; }
-            { key = "Mod+D repeat=false"; command = "toggle-overview;"; }
+            { key = "Mod+D repeat=false"; command = " oggle-overview;"; }
             { key = "Mod+Q repeat=false"; command = "close-window;"; }
             { key = "Mod+Alt+Q"; command = "quit;"; }
             { key = "Mod+W"; command = "switch-preset-column-width;"; }

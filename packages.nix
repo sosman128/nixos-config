@@ -34,6 +34,12 @@
     slurp
     wl-clipboard
     alacritty
+    xfce.thunar
+    fuzzel
+    waybar
+    cmatrix
+    zellij
+    xwayland-satellite
   ];
 
   # --- FONT PACKAGES
