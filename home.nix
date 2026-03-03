@@ -8,14 +8,16 @@
 
 {
   imports = [
-    ./configs/cli/starship.nix
-    ./configs/cli/fastfetch.nix
     ./configs/tui/btop.nix
-    ./configs/cli/eza.nix
     ./configs/gui/srb2.nix
-    ./configs/cli/bash.nix
-    ./configs/cli/zoxide.nix
     ./configs/gui/niri.nix
+    ./configs/gui/alacritty.nix
+    ./configs/cli/bash.nix
+    ./configs/cli/eza.nix
+    ./configs/cli/fastfetch.nix
+    ./configs/cli/zoxide.nix
+    ./configs/cli/starship.nix
+    ./configs/env/gtk.nix
   ];
 
   # --- USER SETTINGS

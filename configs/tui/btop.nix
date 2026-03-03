@@ -22,6 +22,7 @@
         settings = {
           color_theme = "horizon";
           vim_keys = true;
+          theme_background = false;
         };
       };
     };
