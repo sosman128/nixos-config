@@ -41,6 +41,8 @@
     cmatrix
     zellij
     xwayland-satellite
+    swaybg
+    swww
   ];
 
   # --- FONT PACKAGES

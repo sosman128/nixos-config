@@ -91,9 +91,16 @@
 
           startup = [
             { name = "dunst"; }
+            { name = "swaybg -i /etc/nixos/resources/niri/wallpaper-blur.png"; shell = true; }
+            { name = "swww-daemon"; }
+            { name = "swww img /etc/nixos/resources/niri/wallpaper.png"; shell = true; }
           ];
         in
-        ''
+          ''
+          layer-rule {
+              match namespace="^wallpaper$"
+              place-within-backdrop true
+          }
           window-rule {
               geometry-corner-radius ${cornerRadius}
               clip-to-geometry true
@@ -127,7 +134,7 @@
                   color "${shadowColor}"
               }
           }
-          ${startup |> builtins.map ({name}: "spawn-at-startup \"${name}\"") |> builtins.concatStringsSep "\n"}
+          ${startup |> builtins.map ({name, shell ? false}: "${if shell then "spawn-sh-at-startup" else "spawn-at-startup"} \"${name}\"") |> builtins.concatStringsSep "\n"}
           hotkey-overlay {
               skip-at-startup
           }
