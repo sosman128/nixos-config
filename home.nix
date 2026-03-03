@@ -18,6 +18,7 @@
     ./configs/cli/zoxide.nix
     ./configs/cli/starship.nix
     ./configs/env/gtk.nix
+    ./configs/env/qt.nix
   ];
 
   # --- USER SETTINGS
