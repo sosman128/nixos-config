@@ -12,6 +12,7 @@
     python3
     wget
     niri
+    dunst
   ];
 
   # --- USER PACKAGES

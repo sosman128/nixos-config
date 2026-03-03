@@ -16,7 +16,6 @@
     }:
 
     {
-      # --- HOME
       home.file.".srb2/addons" = {
         source = config.lib.file.mkOutOfStoreSymlink "../../etc/nixos/resources/srb2/addons";
       };

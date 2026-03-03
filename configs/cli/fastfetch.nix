@@ -16,10 +16,8 @@
     }:
 
     {
-      # --- GENERAL
       programs.fastfetch.enable = true;
 
-      # --- HOME
       home.shellAliases.fastfetch =
         let
           color = "magenta";

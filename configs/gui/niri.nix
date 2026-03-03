@@ -70,7 +70,7 @@
             { key = "Mod+Alt+I"; command = "move-column-to-workspace-up;"; }
             { key = "Mod+N"; command = "consume-or-expel-window-left;"; }
             { key = "Mod+M"; command = "consume-or-expel-window-right;"; }
-            { key = "Mod+D repeat=false"; command = " oggle-overview;"; }
+            { key = "Mod+D repeat=false"; command = "toggle-overview;"; }
             { key = "Mod+Q repeat=false"; command = "close-window;"; }
             { key = "Mod+Alt+Q"; command = "quit;"; }
             { key = "Mod+W"; command = "switch-preset-column-width;"; }
@@ -87,6 +87,10 @@
             { key = "XF86AudioNext allow-when-locked=true"; command = "spawn-sh \"playerctl next\";"; }
             { key = "XF86MonBrightnessUp allow-when-locked=true"; command = "spawn \"brightnessctl\" \"--class=backlight\" \"set\" \"+10%\";"; }
             { key = "XF86MonBrightnessDown allow-when-locked=true"; command = "spawn \"brightnessctl\" \"--class=backlight\" \"set\" \"10%-\";"; }
+          ];
+
+          startup = [
+            { name = "dunst"; }
           ];
         in
         ''
@@ -123,7 +127,7 @@
                   color "${shadowColor}"
               }
           }
-          spawn-at-startup "waybar"
+          ${startup |> builtins.map ({name}: "spawn-at-startup \"${name}\"") |> builtins.concatStringsSep "\n"}
           hotkey-overlay {
               skip-at-startup
           }

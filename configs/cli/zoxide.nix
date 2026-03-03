@@ -16,13 +16,11 @@
     }:
 
     {
-      # --- GENERAL
       programs.zoxide = {
         enable = true;
         enableBashIntegration = true;
       };
 
-      # --- HOME
       home.shellAliases = {
         cd = "z";
         cdi = "zi";

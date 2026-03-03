@@ -16,10 +16,8 @@
     }:
 
     {
-      # --- GENERAL
       programs.starship.enable = true;
 
-      # --- HOME
       home.file.".config/starship.toml".text =
         let
           battery-disabled = true;
