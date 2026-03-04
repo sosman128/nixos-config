@@ -1,5 +1,4 @@
 {
-  lib,
   pkgs,
   ...
 }:
@@ -43,8 +42,8 @@
     xwayland-satellite
     swaybg
     swww
-    quickshell
     bluetuith
+    eww
   ];
 
   # --- FONT PACKAGES
