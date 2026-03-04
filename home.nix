@@ -13,6 +13,7 @@
     ./configs/gui/niri.nix
     ./configs/gui/alacritty.nix
     ./configs/gui/dunst.nix
+    ./configs/gui/quickshell.nix
     ./configs/cli/bash.nix
     ./configs/cli/eza.nix
     ./configs/cli/fastfetch.nix

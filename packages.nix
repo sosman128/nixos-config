@@ -44,6 +44,7 @@
     swaybg
     swww
     quickshell
+    bluetuith
   ];
 
   # --- FONT PACKAGES
