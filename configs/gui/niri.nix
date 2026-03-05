@@ -93,6 +93,7 @@
             { name = "swaybg -i /etc/nixos/resources/niri/wallpaper-blur.png"; shell = true; }
             { name = "swww-daemon"; }
             { name = "swww img /etc/nixos/resources/niri/wallpaper.png"; shell = true; }
+            { name = "eww open panel"; shell = true; }
           ];
         in
           ''
