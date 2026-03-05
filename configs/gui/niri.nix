@@ -15,7 +15,6 @@
       ...
     }:
 
-    # --- HOME
     {
       home.file.".config/niri/config.kdl".text =
         let
