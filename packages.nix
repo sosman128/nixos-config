@@ -34,7 +34,6 @@
     slurp
     wl-clipboard
     alacritty
-    xfce.thunar
     fuzzel
     waybar
     cmatrix
@@ -44,6 +43,7 @@
     swww
     bluetuith
     eww
+    nemo
   ];
 
   # --- FONT PACKAGES
