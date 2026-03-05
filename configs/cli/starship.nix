@@ -20,12 +20,12 @@
 
       home.file.".config/starship.toml".text =
         let
-          battery-disabled = true;
+          batteryDisabled = true;
         in
         ''
           "$schema" = 'https://starship.rs/config-schema.json'
           [battery]
-          disabled = ${if battery-disabled then "true" else "false"}
+          disabled = ${if batteryDisabled then "true" else "false"}
 
           [aws]
           symbol = " "
