@@ -14,6 +14,7 @@
     ./configs/gui/alacritty.nix
     ./configs/gui/dunst.nix
     ./configs/gui/eww.nix
+    ./configs/gui/emacs.nix
     ./configs/cli/bash.nix
     ./configs/cli/eza.nix
     ./configs/cli/fastfetch.nix
