@@ -47,6 +47,7 @@
     tokei
     bc
     libnotify
+    vimix-cursors
   ];
 
   # --- FONT PACKAGES

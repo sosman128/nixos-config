@@ -26,6 +26,11 @@
 
           cornerRadius = "7";
 
+          cursor = {
+            theme = "Vimix-white-cursors";
+            size = "36";
+          };
+
           xkb = {
             options = "caps:super";
             layout = "us,eg";
@@ -97,6 +102,10 @@
           ];
         in
           ''
+           cursor {
+              xcursor-theme "${cursor.theme}"
+              xcursor-size ${cursor.size}
+           }
           layer-rule {
               match namespace="^wallpaper$"
               place-within-backdrop true
