@@ -44,6 +44,9 @@
     bluetuith
     eww
     nemo
+    tokei
+    bc
+    libnotify
   ];
 
   # --- FONT PACKAGES
