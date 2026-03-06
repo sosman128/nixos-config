@@ -25,15 +25,21 @@
           };
 
           clock = {
-            backgroundColor = "#585b70";
+            backgroundColor = "#89dceb";
+            fontColor = "#313244";
+            fontWeight = "700";
           };
 
           workspaceIndicator = {
-            backgroundColor = "#585b70";
+            backgroundColor = "#eba0ac";
+            fontColor = "#313244";
+            fontWeight = "700";
           };
 
           volumeIndicator = {
-            backgroundColor = "#585b70";
+            backgroundColor = "#b4befe";
+            fontColor = "#313244";
+            fontWeight = "700";
           };
         in
         ''
@@ -42,7 +48,7 @@
                                   `niri msg workspaces | grep "*" | cut -c 4`)
         (defpoll volume :interval "0.1s"
                         :initial "10%"
-                        `wpctl get-volume @DEFAULT_AUDIO_SINK@ | cut -c9-`)
+                        `echo "$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | cut -c9-)"*100 | bc | awk '{printf("%d\n",$1 + 0.5)}' | cut -c -2`)
         (defpoll hour :interval "0.1s"
                       :initial "1"
                       `date +%H`)
@@ -52,16 +58,16 @@
         (defwidget workspace-indicator []
                    (box :orientation "v"
                         :space-evenly false
-                   (label :text workspace-number :valign "start" :css "label {background-color: ${workspaceIndicator.backgroundColor};}")))
+                   (label :text workspace-number :valign "start" :css "label {background-color: ${workspaceIndicator.backgroundColor}; color:${workspaceIndicator.fontColor}; font-weight:${workspaceIndicator.fontWeight}; }")))
         (defwidget volume-indicator []
                    (box :orientation "v"
                         :space-evenly false
-                   (label :text volume :valign "start" :css "label {background-color: ${volumeIndicator.backgroundColor};}")))
+                   (label :text volume :valign "start" :css "label {background-color: ${volumeIndicator.backgroundColor}; color:${volumeIndicator.fontColor}; font-weight:${volumeIndicator.fontWeight}; }")))
         (defwidget clock []
                    (box :orientation "v"
                         :space-evenly false
-                   (label :text hour :valign "start" :css "label {background-color: ${clock.backgroundColor};}")
-                   (label :text minute :valign "start" :css "label {background-color: ${clock.backgroundColor};}")))
+                   (label :text hour :valign "start" :css "label { background-color:${clock.backgroundColor} ; color:${clock.fontColor} ; font-weight:${clock.fontWeight} ; }")
+                   (label :text minute :valign "start" :css "label {background-color: ${clock.backgroundColor}; color:${clock.fontColor} ; font-weight:${clock.fontWeight} ;}")))
         (defwindow panel :monitor 0
                          :geometry (geometry :x "0%"
                                              :y "20px"
