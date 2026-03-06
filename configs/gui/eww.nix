@@ -23,7 +23,16 @@
             width = "30px";
             height = "100%";
           };
+
           clock = {
+            backgroundColor = "#585b70";
+          };
+
+          workspaceIndicator = {
+            backgroundColor = "#585b70";
+          };
+
+          volumeIndicator = {
             backgroundColor = "#585b70";
           };
         in
@@ -31,12 +40,23 @@
         (defpoll workspace-number :interval "0.1s"
                                   :initial "1"
                                   `niri msg workspaces | grep "*" | cut -c 4`)
+        (defpoll volume :interval "0.1s"
+                        :initial "10%"
+                        `wpctl get-volume @DEFAULT_AUDIO_SINK@ | cut -c9-`)
         (defpoll hour :interval "0.1s"
                       :initial "1"
                       `date +%H`)
         (defpoll minute :interval "0.1s"
                         :initial "1"
                         `date +%M`)
+        (defwidget workspace-indicator []
+                   (box :orientation "v"
+                        :space-evenly false
+                   (label :text workspace-number :valign "start" :css "label {background-color: ${workspaceIndicator.backgroundColor};}")))
+        (defwidget volume-indicator []
+                   (box :orientation "v"
+                        :space-evenly false
+                   (label :text volume :valign "start" :css "label {background-color: ${volumeIndicator.backgroundColor};}")))
         (defwidget clock []
                    (box :orientation "v"
                         :space-evenly false
@@ -55,7 +75,11 @@
                    :vexpand true
                    (clock :valign "start")
                    (label :text "" :valign "center")
-                   (label :text workspace-number :valign "end":css "label {background-color: #585b70;}")))
+                   (box :orientation "v"
+                        :space-evenly false
+                        :valign "end"
+                   (volume-indicator :valign "end")
+                   (workspace-indicator :valign "end"))))
         '';
     };
 }
