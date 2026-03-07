@@ -50,7 +50,7 @@
         (defpoll volume
           :interval "0.1s"
           :initial "10%"
-          `echo "$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | cut -c9-)"`)
+          `x=$(wpctl get-volume @DEFAULT_SINK@); if [[ $x != "Volume: 0.00" ]]; then echo $(echo $(wpctl get-volume @DEFAULT_SINK@ | sed 's/.* //') '* 100' | bc | rev | cut -c 4- | rev); else echo 0; fi`)
         (defpoll hour
           :interval "0.1s"
           :initial "1"
