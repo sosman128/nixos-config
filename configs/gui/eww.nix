@@ -25,7 +25,7 @@
           };
 
           clock = {
-            backgroundColor = "#89dceb";
+            backgroundColor = "#fab387";
             fontColor = "#313244";
             fontWeight = "700";
           };
@@ -49,7 +49,7 @@
           `niri msg workspaces | grep "*" | cut -c 4`)
         (defpoll volume
           :interval "0.1s"
-          :initial "10%"
+          :initial "10"
           `x=$(wpctl get-volume @DEFAULT_SINK@); if [[ $x != "Volume: 0.00" ]]; then echo $(echo $(wpctl get-volume @DEFAULT_SINK@ | sed 's/.* //') '* 100' | bc | rev | cut -c 4- | rev); else echo 0; fi`)
         (defpoll hour
           :interval "0.1s"
@@ -69,7 +69,7 @@
              :css "label
                {background-color: ${workspaceIndicator.backgroundColor};
                 color:${workspaceIndicator.fontColor};
-                font-weight:${workspaceIndicator.fontWeight}; }")))
+                font-weight:${workspaceIndicator.fontWeight};}")))
         (defwidget volume-indicator []
           (box
             :orientation "v"
@@ -80,7 +80,7 @@
              :css "label
               {background-color: ${volumeIndicator.backgroundColor};
               color:${volumeIndicator.fontColor};
-              font-weight:${volumeIndicator.fontWeight}; }")))
+              font-weight:${volumeIndicator.fontWeight};}")))
         (defwidget clock []
           (box
             :orientation "v"
@@ -89,16 +89,16 @@
              :text hour
              :valign "start"
              :css "label
-              {background-color:${clock.backgroundColor} ;
-              color:${clock.fontColor} ;
-              font-weight:${clock.fontWeight} ; }")
+              {background-color:${clock.backgroundColor};
+              color:${clock.fontColor};
+              font-weight:${clock.fontWeight};}")
             (label
               :text minute
               :valign "start"
               :css "label
                 {background-color: ${clock.backgroundColor};
-                color:${clock.fontColor} ;
-                font-weight:${clock.fontWeight} ;}")))
+                color:${clock.fontColor};
+                font-weight:${clock.fontWeight};}")))
         (defwindow panel
           :monitor 0
           :geometry

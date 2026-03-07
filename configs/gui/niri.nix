@@ -81,8 +81,8 @@
             { key = "Mod+Alt+W"; command = "fullscreen-window;"; }
             { key = "Print"; command = "screenshot;";}
             { key = "Alt+Print"; command = "screenshot-window;";}
-            { key = "XF86AudioRaiseVolume allow-when-locked=true"; command = "spawn-sh \"wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ -l 1.0\";"; }
-            { key = "XF86AudioLowerVolume allow-when-locked=true"; command = "spawn-sh \"wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-\";"; }
+            { key = "XF86AudioRaiseVolume allow-when-locked=true"; command = "spawn-sh \"wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05+ -l 1.0\";"; }
+            { key = "XF86AudioLowerVolume allow-when-locked=true"; command = "spawn-sh \"wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05-\";"; }
             { key = "XF86AudioMute allow-when-locked=true"; command = "spawn-sh \"wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle\";"; }
             { key = "XF86AudioMicMute allow-when-locked=true"; command = "spawn-sh \"wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle\";"; }
             { key = "XF86AudioPlay allow-when-locked=true"; command = "spawn-sh \"playerctl play-pause\";"; }
