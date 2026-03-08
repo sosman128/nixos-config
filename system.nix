@@ -16,6 +16,11 @@
   ];
   nixpkgs.config.allowUnfree = true;
   nix.settings.auto-optimise-store = true;
+
+  # --- APPIMAGES
+  programs.appimage.enable = true;
+  programs.appimage.binfmt = true;
+
   # --- BOOTLOADER
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
