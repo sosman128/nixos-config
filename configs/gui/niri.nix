@@ -32,7 +32,7 @@
           };
 
           xkb = {
-            options = "caps:super";
+            options = "caps:super,grp:win_space_toggle";
             layout = "us,eg";
           };
 
