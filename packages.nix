@@ -16,7 +16,6 @@
 
   # --- USER PACKAGES
   users.users.sosman64.packages = with pkgs; [
-    kdePackages.kate
     kdePackages.qtstyleplugin-kvantum
     chromium
     vesktop
@@ -30,8 +29,6 @@
     starship
     zoxide
     srb2
-    grim
-    slurp
     wl-clipboard
     alacritty
     fuzzel
@@ -48,6 +45,8 @@
     bc
     libnotify
     vimix-cursors
+    godot
+    obs-studio
   ];
 
   # --- FONT PACKAGES
