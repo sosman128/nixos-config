@@ -22,16 +22,16 @@
         settings = {
           main = {
             terminal = "${pkgs.alacritty}/bin/alacritty";
-            prompt = " >> ";
+            prompt = ">";
           };
           colors = {
             background = "#1e1e2eff";
             border = "#eba0acff";
             text = "#cdd6f4ff";
-            selected = "#181825ff";
+            selection = "#181825ff";
           };
           border = {
-            radius = 7;
+            radius = 0;
             width = 4;
           };
         };
