@@ -22,7 +22,7 @@
         settings = {
           main = {
             terminal = "${pkgs.alacritty}/bin/alacritty";
-            prompt = ">";
+            prompt = " >";
           };
           colors = {
             background = "#1e1e2eff";

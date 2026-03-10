@@ -22,7 +22,7 @@
   programs.appimage.binfmt = true;
 
   # --- BOOTLOADER
-  boot.loader.systemd-boot.enable = true;
+  boot.loader.limine.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
   # --- NETWORKING
