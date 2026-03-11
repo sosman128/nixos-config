@@ -9,6 +9,7 @@
 {
   imports = [
     ./configs/tui/btop.nix
+    ./configs/tui/zellij.nix
     ./configs/gui/srb2.nix
     ./configs/gui/niri.nix
     ./configs/gui/alacritty.nix
