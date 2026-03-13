@@ -103,53 +103,53 @@
         in
           ''
            cursor {
-              xcursor-theme "${cursor.theme}"
-              xcursor-size ${cursor.size}
+             xcursor-theme "${cursor.theme}"
+             xcursor-size ${cursor.size}
            }
           layer-rule {
-              match namespace="^wallpaper$"
-              place-within-backdrop true
+            match namespace="^wallpaper$"
+            place-within-backdrop true
           }
           window-rule {
-              geometry-corner-radius ${cornerRadius}
-              clip-to-geometry true
+            geometry-corner-radius ${cornerRadius}
+            clip-to-geometry true
           }
           ${if preferNoCSD then "prefer-no-csd" else ""}
           input {
-              keyboard {
-                  xkb {
-                      options "${xkb.options}"
-                      layout "${xkb.layout}"
-                  }
+            keyboard {
+              xkb {
+                options "${xkb.options}"
+                layout "${xkb.layout}"
               }
+            }
           }
           layout {
-              gaps ${layout.gaps}
-              center-focused-column "${layout.centerFocusedColumn}"
-              preset-column-widths {
-                  ${builtins.concatStringsSep "\n\t" (builtins.map (text: "proportion ${text}") proportions)}
-              }
-              default-column-width { proportion ${defaultColumnWidth}; }
-              focus-ring {
-                  off
-              }
-              border {
-                  width ${border.width}
-                  active-color "${border.colors.active}"
-                  inactive-color "${border.colors.inactive}"
-                  urgent-color "${border.colors.urgent}"
-              }
-              shadow {
-                  color "${shadowColor}"
-              }
+            gaps ${layout.gaps}
+            center-focused-column "${layout.centerFocusedColumn}"
+            preset-column-widths {
+              ${builtins.concatStringsSep "\n\t" (builtins.map (text: "proportion ${text}") proportions)}
+            }
+            default-column-width { proportion ${defaultColumnWidth}; }
+            focus-ring {
+              off
+            }
+            border {
+              width ${border.width}
+              active-color "${border.colors.active}"
+              inactive-color "${border.colors.inactive}"
+              urgent-color "${border.colors.urgent}"
+            }
+            shadow {
+              color "${shadowColor}"
+            }
           }
           ${startup |> builtins.map ({name, shell ? false}: "${if shell then "spawn-sh-at-startup" else "spawn-at-startup"} \"${name}\"") |> builtins.concatStringsSep "\n"}
           hotkey-overlay {
-              skip-at-startup
+            skip-at-startup
           }
           screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
           binds {
-              ${builtins.map ({key,command}: "\t${key} { ${command} }") keybinds |> builtins.concatStringsSep "\n"}
+            ${builtins.map ({key,command}: "\t${key} { ${command} }") keybinds |> builtins.concatStringsSep "\n"}
           }
         '';
     };
