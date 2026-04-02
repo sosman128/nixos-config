@@ -47,6 +47,9 @@
     vimix-cursors
     godot
     obs-studio
+    bat
+    unzip
+    zip
   ];
 
   # --- FONT PACKAGES
