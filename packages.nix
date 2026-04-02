@@ -50,6 +50,7 @@
     bat
     unzip
     zip
+    shattered-pixel-dungeon
   ];
 
   # --- FONT PACKAGES
