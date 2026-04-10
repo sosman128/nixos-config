@@ -51,6 +51,7 @@
     unzip
     zip
     shattered-pixel-dungeon
+    wine
   ];
 
   # --- FONT PACKAGES
