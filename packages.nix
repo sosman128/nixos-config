@@ -52,6 +52,13 @@
     zip
     shattered-pixel-dungeon
     wine
+    audacity
+    xarchiver
+    jdk8
+    jre8
+    javaPackages.compiler.temurin-bin.jre-8
+    gradle
+    jdt-language-server
   ];
 
   # --- FONT PACKAGES
